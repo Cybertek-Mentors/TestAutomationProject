@@ -23,7 +23,7 @@ public class LoginStepDefinitions {
     public void user_logs_in_as_a_sales_manager() {
         System.out.println("Login as sales manager");
 
-        loginPage.login();
+        loginPage.login("salesmanager110", "UserUser123");
     }
 
     @Then("user should verify that title is a Dashboard")
