@@ -1,7 +1,8 @@
 package com.vytrack.pages;
 
-import com.automation.utilities.BrowserUtils;
-import com.automation.utilities.Driver;
+
+import com.vytrack.utilities.BrowserUtilities;
+import com.vytrack.utilities.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -31,7 +32,7 @@ public abstract class AbstractPageBase {
 
 
     public String getCurrentUserName(){
-        BrowserUtils.waitForPageToLoad(10);
+        BrowserUtilities.waitForPageToLoad(10);
         wait.until(ExpectedConditions.visibilityOf(currentUser));
         return currentUser.getText().trim();
     }
@@ -51,7 +52,7 @@ public abstract class AbstractPageBase {
 
         Actions actions = new Actions(driver);
 
-        BrowserUtils.wait(4);
+        BrowserUtilities.wait(4);
 
         actions.moveToElement(tabElement).
                 pause(2000).
@@ -59,6 +60,6 @@ public abstract class AbstractPageBase {
                 build().perform();
 
         //increase this wait rime if still failing
-        BrowserUtils.wait(4);
+        BrowserUtilities.wait(4);
     }
 }
