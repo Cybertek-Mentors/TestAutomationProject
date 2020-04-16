@@ -12,6 +12,7 @@ import org.junit.runner.RunWith;
         strict = false,
         tags = "",
         plugin = "html:target/cucumber-html-report"
+
 )
 public class CucumberRunner {
 
