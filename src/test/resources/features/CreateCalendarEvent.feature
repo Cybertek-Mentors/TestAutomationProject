@@ -10,3 +10,5 @@ Feature: Create calendar event
     And user enters "On this meeting we discuss what went well, what went wrong and what can be improved" as a description
     And user enters "Sprint Retrospective" as a title
     Then user click on save and close button
+    And user verifies that description of new calendar event is "On this meeting we discuss what went well, what went wrong and what can be improved"
+    And user verifies that title of new calendar event is "Sprint Retrospective"
