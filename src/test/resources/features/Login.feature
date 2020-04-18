@@ -22,3 +22,8 @@ Feature: Login
   Scenario: Login as driver and verify that title is a Dashboard
     When user logs in as a driver
     Then user should verify that title is a Dashboard
+
+  @login_with_params
+  Scenario: Login with parameters
+    When user enters "storemanager85" username and "UserUser123" password
+    Then user should verify that title is a Dashboard
