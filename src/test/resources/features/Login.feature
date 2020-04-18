@@ -25,5 +25,5 @@ Feature: Login
 
   @login_with_params
   Scenario: Login with parameters
-    When user enters "storemanager85" username and "UserUser123" password
+    When user enters "salesmanager115" username and "UserUser123" password
     Then user should verify that title is a Dashboard
