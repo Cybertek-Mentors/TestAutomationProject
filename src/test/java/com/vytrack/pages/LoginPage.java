@@ -13,7 +13,6 @@ public class LoginPage extends AbstractPageBase{
 
     @FindBy(id = "prependedInput")
     private WebElement username;
-//    public WebElement username2 = Driver.getDriver().findElement(By.id("prependedInput"));
 
     @FindBy(id = "prependedInput2")
     private WebElement password;
