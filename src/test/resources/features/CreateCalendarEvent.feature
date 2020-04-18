@@ -6,3 +6,4 @@ Feature: Create calendar event
     Given user is on the login page
     When user logs in as a sales manager
     And user navigates to "Activities" and "Calendar Events"
+    Then user clicks on create calendar event button
