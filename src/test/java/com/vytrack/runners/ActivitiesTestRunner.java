@@ -13,7 +13,7 @@ import org.junit.runner.RunWith;
         tags = "@view_calendar_events",
         plugin = {
                 "html:target/default-report",
-                "json:target/cucumber.json"
+                "json:target/cucumber2.json"
         }
 
 )
