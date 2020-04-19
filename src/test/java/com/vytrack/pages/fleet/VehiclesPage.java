@@ -63,4 +63,10 @@ public class VehiclesPage extends AbstractPageBase {
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.elementToBeClickable(createCar)).click();
     }
+
+    public String getCarGeneralInfo(String parameter) {
+        String xpath = "//label[text()='" + parameter + "']/following-sibling::div/div";
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)));
+        return driver.findElement(By.xpath(xpath)).getText().trim();
+    }
 }
