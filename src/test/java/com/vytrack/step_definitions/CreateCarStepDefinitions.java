@@ -27,6 +27,8 @@ public class CreateCarStepDefinitions {
             vehiclesPage.setLocationInput(row.get("Location"));
             vehiclesPage.setModelYear(row.get("Model Year"));
             vehiclesPage.setColor(row.get("Color"));
+            //click to save ne car
+            vehiclesPage.clickOnSaveAndClose();
         }
     }
 }
