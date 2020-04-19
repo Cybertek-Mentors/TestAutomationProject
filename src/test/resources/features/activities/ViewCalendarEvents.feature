@@ -1,3 +1,4 @@
+@view_calendar_events
 Feature: View all calendar events
   As user, I want to be able to see all calendar events as a table
 
