@@ -17,14 +17,16 @@ public class CreateCarStepDefinitions {
 
     //    Then user creates a car with following info:
 //            | License Plate | Driver    | Location    | Model Year | Color |
-//            | SDET          | Pro Racer | Rome, Italy | 2020       | Red   |
+//            | SDET          | Pro Racer | Rome, Italy | 2020       | Red   | 0 row
     @Then("user creates a car with following info:")
     public void user_creates_a_car_with_following_info(List<Map<String, String>> dataTable) {
         System.out.println(dataTable);
-        vehiclesPage.setLicencePlateInput(dataTable.get(0).get("License Plate"));
-        vehiclesPage.setDriverInput(dataTable.get(0).get("Driver"));
-        vehiclesPage.setLocationInput(dataTable.get(0).get("Location"));
-        vehiclesPage.setModelYear(dataTable.get(0).get("Model Year"));
-        vehiclesPage.setColor(dataTable.get(0).get("Color"));
+        for (Map<String, String> row : dataTable) {
+            vehiclesPage.setLicencePlateInput(row.get("License Plate"));
+            vehiclesPage.setDriverInput(row.get("Driver"));
+            vehiclesPage.setLocationInput(row.get("Location"));
+            vehiclesPage.setModelYear(row.get("Model Year"));
+            vehiclesPage.setColor(row.get("Color"));
+        }
     }
 }
