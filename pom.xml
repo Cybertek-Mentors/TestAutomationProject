@@ -30,12 +30,14 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M4</version>
                 <configuration>
+                    <parallel>classes</parallel>
+                    <threadCount>2</threadCount>
+                    <perCoreThreadCount>false</perCoreThreadCount>
+                    <forkCount>2C</forkCount>
                     <includes>
                         <include>**/*Runner.java</include>
                     </includes>
                     <testFailureIgnore>true</testFailureIgnore>
-<!--                    to rerun failed tests automatically-->
-<!--                    <rerunFailingTestsCount>1</rerunFailingTestsCount>-->
                 </configuration>
             </plugin>
             <plugin>
