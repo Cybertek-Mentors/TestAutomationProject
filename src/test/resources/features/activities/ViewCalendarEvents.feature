@@ -4,7 +4,8 @@ Feature: View all calendar events
 
   Scenario: User permissions
     Given user is on the login page
-    When user navigates to "Activities" and "Calendar Events"
+    When user logs in as a sales manager
+    And user navigates to "Activities" and "Calendar Events"
     Then View Per Page menu should have following options
       | 10  |
       | 25  |
