@@ -34,7 +34,7 @@ Feature: Login
     When user enters "<username>" username and "<password>" password
     Then user name should be "<name>"
 
-    Examples:
+    Examples: credentials
       | username        | password    | name             |
       | user187         | UserUser123 | Jerel Vandervort |
       | user200         | UserUser123 | Lonzo Leuschke   |
