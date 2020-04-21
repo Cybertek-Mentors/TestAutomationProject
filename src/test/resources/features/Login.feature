@@ -32,7 +32,7 @@ Feature: Login
   @scenario_outline
   Scenario Outline: User names test
     When user enters "<username>" username and "<password>" password
-    Then user name should be <name>
+    Then user name should be "<name>"
 
     Examples:
       | username        | password    | name             |
