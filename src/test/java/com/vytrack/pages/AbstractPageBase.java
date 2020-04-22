@@ -36,6 +36,7 @@ public abstract class AbstractPageBase {
     public void clickOnSaveAndClose() {
         BrowserUtilities.wait(3);
         wait.until(ExpectedConditions.elementToBeClickable(saveAndClose)).click();
+        waitForLoaderMask();
     }
 
     public String getCurrentUserName() {
