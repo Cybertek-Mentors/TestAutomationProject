@@ -8,9 +8,9 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         glue = "com/vytrack/step_definitions",
         features = "src/test/resources",
-        dryRun = false,
+        dryRun = true,
         strict = false,
-        tags = "@scenario_outline",
+        tags = "@scenario_outline_2",
         plugin = {
                 "html:target/default-report",
                 "json:target/cucumber1.json"

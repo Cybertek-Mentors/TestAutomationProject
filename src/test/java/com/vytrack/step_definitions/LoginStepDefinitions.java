@@ -64,4 +64,16 @@ public class LoginStepDefinitions {
     }
 
 
+    @When("user logs in as {string}")
+    public void user_logs_in_as(String string) {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+
+    @Then("user verifies that page title is {string}")
+    public void user_verifies_that_page_title_is(String string) {
+        System.out.println("Verify that page title is: "+string);
+        Assert.assertEquals(string, Driver.getDriver().getTitle());
+    }
+
 }
