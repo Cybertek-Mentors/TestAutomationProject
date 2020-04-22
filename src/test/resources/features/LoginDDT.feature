@@ -1,7 +1,8 @@
 Feature: Login tests with Scenario Outline
 
   Scenario Outline: page titles with different users
-    Given logs is as "<user_type>"
+    Given user is on the login page
+    When user logs in as "<user_type>"
     Then user navigates to "<tab>" and "<module>"
     Then user verifies that page title is "<title>"
 
