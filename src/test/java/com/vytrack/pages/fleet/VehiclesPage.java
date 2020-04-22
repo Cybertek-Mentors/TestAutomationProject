@@ -44,6 +44,7 @@ public class VehiclesPage extends AbstractPageBase {
 
     public void setLocationInput(String location) {
         locationInput.sendKeys(location);
+        wait.until(ExpectedConditions.attributeToBe(locationInput, "value", location));
     }
 
     public void setModelYear(String year) {
@@ -60,8 +61,8 @@ public class VehiclesPage extends AbstractPageBase {
 
 
     public void clickToCreateCar() {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.elementToBeClickable(createCar)).click();
+        waitForLoaderMask();
     }
 
     public String getCarGeneralInfo(String parameter) {
