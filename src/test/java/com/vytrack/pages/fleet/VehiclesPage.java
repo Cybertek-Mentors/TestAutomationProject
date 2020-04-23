@@ -59,7 +59,6 @@ public class VehiclesPage extends AbstractPageBase {
         submit.click();
     }
 
-
     public void clickToCreateCar() {
         wait.until(ExpectedConditions.elementToBeClickable(createCar)).click();
         waitForLoaderMask();
