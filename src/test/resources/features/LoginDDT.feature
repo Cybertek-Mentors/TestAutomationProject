@@ -1,6 +1,7 @@
 @scenario_outline_2
 Feature: Login tests with Scenario Outline
 
+  @smoke_test
   Scenario Outline: Go to <module> and verify title: <title>
     Given user is on the login page
     When user logs in as "<user_type>"
