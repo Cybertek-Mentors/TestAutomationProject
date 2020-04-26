@@ -5,3 +5,7 @@ clean test -Dcucumber.options="--tags @driver"
 
 
 you can specify any tags that are available in your project
+
+To run smoke test use:
+
+clean test -P Smoke
