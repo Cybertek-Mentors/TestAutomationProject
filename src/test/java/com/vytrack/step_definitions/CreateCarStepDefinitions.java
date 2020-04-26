@@ -2,8 +2,7 @@ package com.vytrack.step_definitions;
 
 import com.vytrack.pages.fleet.VehiclesPage;
 import io.cucumber.java.en.Then;
-import org.junit.Assert;
-
+import org.testng.Assert;
 import java.util.List;
 import java.util.Map;
 

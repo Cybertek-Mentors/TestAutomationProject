@@ -7,7 +7,7 @@ import com.vytrack.utilities.Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.junit.Assert;
+import org.testng.Assert;
 
 public class LoginStepDefinitions {
     LoginPage loginPage = new LoginPage();
