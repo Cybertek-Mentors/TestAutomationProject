@@ -43,4 +43,8 @@
 
 ####To read in Java something -Dparam use --> System.getProperty("param")
 
+###To run regression over selenium grid
+
+    clean test -Dbrowser=chrome-remote -P Regression
+
     
