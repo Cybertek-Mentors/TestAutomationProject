@@ -65,7 +65,7 @@ public class Driver {
                         desiredCapabilities.setPlatform(Platform.ANY);
 
                         driverPool.set(new RemoteWebDriver(url, desiredCapabilities));
-                    } catch (MalformedURLException e) {
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                     break;
