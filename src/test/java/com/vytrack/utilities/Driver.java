@@ -62,7 +62,7 @@ public class Driver {
                         //we create object of URL and specify
                         //selenium grid hub as a parameter
                         //make sure it ends with /wd/hub
-                        URL url = new URL("http://3.90.175.72:4444/wd/hub");
+                        URL url = new URL("http://34.236.36.95:4444/wd/hub");
                         //desiredCapabilities used to specify what kind of node
                         //is required for testing
                         //such as: OS type, browser, version, etc...
