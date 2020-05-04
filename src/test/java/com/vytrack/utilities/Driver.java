@@ -18,7 +18,6 @@ public class Driver {
 
     //same for everyone
     private static final ThreadLocal<WebDriver> driverPool = new ThreadLocal<>();
-    private static String GRID_URL = "http://34.236.36.95:4444/wd/hub";
 
     //so no one can create object of Driver class
     //everyone should call static getter method instead
@@ -34,6 +33,7 @@ public class Driver {
      * @return
      */
     public synchronized static WebDriver getDriver() {
+        String GRID_URL = "http://35.171.158.59:4444/wd/hub";
         //if webdriver object doesn't exist
         //create it
         if (driverPool.get() == null) {
@@ -45,7 +45,7 @@ public class Driver {
             }
 
             if (System.getProperty("grid_url") != null) {
-                GRID_URL = System.getProperty("grid_rl");
+                GRID_URL = System.getProperty("grid_url");
             }
 
             switch (browser) {
