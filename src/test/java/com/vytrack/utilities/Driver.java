@@ -17,7 +17,8 @@ import java.net.URL;
 public class Driver {
 
     //same for everyone
-    private static ThreadLocal<WebDriver> driverPool = new ThreadLocal<>();
+    private static final ThreadLocal<WebDriver> driverPool = new ThreadLocal<>();
+    private static String GRID_URL = "http://34.236.36.95:4444/wd/hub";
 
     //so no one can create object of Driver class
     //everyone should call static getter method instead
@@ -43,6 +44,10 @@ public class Driver {
                 browser = System.getProperty("browser");
             }
 
+            if (System.getProperty("grid_url") != null) {
+                GRID_URL = System.getProperty("grid_rl");
+            }
+
             switch (browser) {
                 case "chrome":
                     WebDriverManager.chromedriver().setup();
@@ -62,7 +67,7 @@ public class Driver {
                         //we create object of URL and specify
                         //selenium grid hub as a parameter
                         //make sure it ends with /wd/hub
-                        URL url = new URL("http://34.236.36.95:4444/wd/hub");
+                        URL url = new URL(GRID_URL);
                         //desiredCapabilities used to specify what kind of node
                         //is required for testing
                         //such as: OS type, browser, version, etc...
@@ -70,6 +75,23 @@ public class Driver {
                         desiredCapabilities.setBrowserName(BrowserType.CHROME);
                         desiredCapabilities.setPlatform(Platform.ANY);
 
+                        driverPool.set(new RemoteWebDriver(url, desiredCapabilities));
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                case "firefox-remote":
+                    try {
+                        //we create object of URL and specify
+                        //selenium grid hub as a parameter
+                        //make sure it ends with /wd/hub
+                        URL url = new URL(GRID_URL);
+                        //desiredCapabilities used to specify what kind of node
+                        //is required for testing
+                        //such as: OS type, browser, version, etc...
+                        DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
+                        desiredCapabilities.setBrowserName(BrowserType.FIREFOX);
+                        desiredCapabilities.setPlatform(Platform.ANY);
                         driverPool.set(new RemoteWebDriver(url, desiredCapabilities));
                     } catch (Exception e) {
                         e.printStackTrace();

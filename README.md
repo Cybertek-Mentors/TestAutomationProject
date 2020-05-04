@@ -43,8 +43,18 @@
 
 ####To read in Java something -Dparam use --> System.getProperty("param")
 
-###To run regression over selenium grid
+###To run regression over selenium grid on default server
 
     clean test -Dbrowser=chrome-remote -P Regression
 
+###To run regression over selenium grid on your own server
+
+    clean test -Dbrowser=chrome-remote -Dgrid_url=http://ip:4444/wd/hub -P Regression
+   
+###List of parameters
+  -Dbrowser
+  
+  -Dgrid_url
+  
+  -Denv 
     
