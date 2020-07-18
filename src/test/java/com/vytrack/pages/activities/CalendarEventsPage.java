@@ -1,6 +1,6 @@
 package com.vytrack.pages.activities;
 
-import com.vytrack.pages.AbstractPageBase;
+import com.vytrack.pages.TestBase;
 import com.vytrack.utilities.BrowserUtilities;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -8,8 +8,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.util.List;
 
-public class CalendarEventsPage extends AbstractPageBase {
-
+public class CalendarEventsPage extends TestBase {
 
     @FindBy(css = "[title='Create Calendar event']")
     private WebElement createCalendarEvent;
@@ -37,8 +36,6 @@ public class CalendarEventsPage extends AbstractPageBase {
 
     @FindBy(id = "tinymce")
     private WebElement descriptionTextArea;
-
-
 
     @FindBy(xpath = "(//div[@class='control-label'])[1]")
     private WebElement generalInfoTitle;

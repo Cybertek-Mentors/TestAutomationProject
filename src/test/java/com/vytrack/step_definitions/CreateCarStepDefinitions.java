@@ -2,17 +2,19 @@ package com.vytrack.step_definitions;
 
 import com.vytrack.pages.fleet.VehiclesPage;
 import io.cucumber.java.en.Then;
+import org.apache.log4j.Logger;
 import org.junit.Assert;
 
 import java.util.List;
 import java.util.Map;
 
 public class CreateCarStepDefinitions {
+    private static final Logger logger = Logger.getLogger(CreateCarStepDefinitions.class);
     VehiclesPage vehiclesPage = new VehiclesPage();
 
     @Then("user click on create a car button")
     public void user_click_on_create_a_car_button() {
-        System.out.println("User click on create a car button");
+        logger.info("User click on create a car button");
         vehiclesPage.clickToCreateCar();
     }
 
@@ -21,7 +23,7 @@ public class CreateCarStepDefinitions {
 //            | SDET          | Pro Racer | Rome, Italy | 2020       | Red   | 0 row
     @Then("user creates a car with following info:")
     public void user_creates_a_car_with_following_info(List<Map<String, String>> dataTable) {
-        System.out.println(dataTable);
+        logger.info(dataTable);
         for (Map<String, String> row : dataTable) {
             vehiclesPage.setLicencePlateInput(row.get("License Plate"));
 

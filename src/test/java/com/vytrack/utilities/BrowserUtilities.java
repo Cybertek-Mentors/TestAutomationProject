@@ -1,6 +1,8 @@
 package com.vytrack.utilities;
 
+import com.vytrack.pages.LoginPage;
 import org.apache.commons.io.FileUtils;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -9,13 +11,17 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
 public class BrowserUtilities {
+    private static final Logger logger = Logger.getLogger(BrowserUtilities.class);
+
     /**
      * Pause test for some time
      *
@@ -78,46 +84,37 @@ public class BrowserUtilities {
     }
 
     /**
-     * @param name screenshot name
-     * @return path to the screenshot
+     * This method takes a screenshot and saves it with a date&time stamp.
+     *
+     * @return path to screenshot
      */
-    public static String getScreenshot(String name) {
-        //adding date and time to screenshot name, to make screenshot unique
-        name = new Date().toString().replace(" ", "_").replace(":", "-") + "_" + name;
-        //where we gonna store a screenshot
-        String path = "";
-
-        if (System.getProperty("os.name").toLowerCase().contains("mac")) {
-            path = System.getProperty("user.dir") + "/test-output/screenshots/" + name + ".png";
-        } else {
-            path = System.getProperty("user.dir") + "\\test-output\\screenshots\\" + name + ".png";
-        }
-
-        System.out.println("OS name: " + System.getProperty("os.name"));
-        System.out.println("Screenshot is here: " + path);
-        //since our reference type is a WebDriver
-        //we cannot see methods from TakesScreenshot interface
-        //that's why do casting
-        TakesScreenshot takesScreenshot = (TakesScreenshot) Driver.getDriver();
-        //take screenshot of web browser, and save it as a file
-        File source = takesScreenshot.getScreenshotAs(OutputType.FILE);
-        //where screenshot will be saved
-        File destination = new File(path);
-        try {
-            //copy file to the previously specified location
-            FileUtils.copyFile(source, destination);
+    public static String takeAScreenshotAndSave(String testName) {
+        String path = System.getProperty("user.dir") + "/src/test/resources/screenshots/" + testName + "/";
+        path = path.replace("/", File.separator);
+        File file = new File(path);
+        file.mkdirs();
+        Date date = new Date();
+        path += date + "screenshot.jpeg";
+        try (OutputStream outputStream = new FileOutputStream(path)) {
+            TakesScreenshot takesScreenshot = (TakesScreenshot) Driver.getDriver();
+            byte[] screenshot = takesScreenshot.getScreenshotAs(OutputType.BYTES);
+            outputStream.write(screenshot);
         } catch (IOException e) {
+            logger.error(e);
             e.printStackTrace();
+            throw new RuntimeException("Failed to create a screenshot :: " + path);
         }
+       logger.info("Screenshot saved here :: " + path);
         return path;
     }
+
 
     /**
      * This method will switch webdriver from current window
      * to target window based on page title
      * @param title of the window to switch
      */
-    public static void scitchWindow(String title){
+    public static void switchWindow(String title){
         Set<String> windowHandles = Driver.getDriver().getWindowHandles();
         for(String window : windowHandles){
             Driver.getDriver().switchTo().window(window);

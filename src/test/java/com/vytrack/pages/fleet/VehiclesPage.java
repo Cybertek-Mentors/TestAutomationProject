@@ -1,14 +1,13 @@
 package com.vytrack.pages.fleet;
 
-import com.vytrack.pages.AbstractPageBase;
+import com.vytrack.pages.TestBase;
 import com.vytrack.utilities.BrowserUtilities;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class VehiclesPage extends AbstractPageBase {
+public class VehiclesPage extends TestBase {
 
     @FindBy(partialLinkText = "Create Car")
     private WebElement createCar;

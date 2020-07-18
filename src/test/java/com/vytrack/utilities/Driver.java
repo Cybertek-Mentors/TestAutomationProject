@@ -1,6 +1,7 @@
 package com.vytrack.utilities;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -15,7 +16,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class Driver {
-
+    private static final Logger logger = Logger.getLogger(Driver.class);
     //same for everyone
     private static final ThreadLocal<WebDriver> driverPool = new ThreadLocal<>();
 
@@ -33,7 +34,7 @@ public class Driver {
      * @return
      */
     public synchronized static WebDriver getDriver() {
-        String GRID_URL = "http://35.171.158.59:4444/wd/hub";
+        String GRID_URL = "http://3.235.145.39:4444/wd/hub";
         //if webdriver object doesn't exist
         //create it
         if (driverPool.get() == null) {
@@ -47,7 +48,7 @@ public class Driver {
             if (System.getProperty("grid_url") != null) {
                 GRID_URL = System.getProperty("grid_url");
             }
-
+            logger.info("Browser :: " + browser);
             switch (browser) {
                 case "chrome":
                     WebDriverManager.chromedriver().setup();
@@ -102,51 +103,15 @@ public class Driver {
                     driverPool.set(new FirefoxDriver());
                     break;
                 default:
-                    throw new RuntimeException("Wrong browser name!");
-            }
-        }
-        return driverPool.get();
-    }
-
-    /**
-     * synchronized makes method thread safe. It ensures that only 1 thread can use it at the time.
-     * <p>
-     * Thread safety reduces performance but it makes everything safe.
-     *
-     * @return
-     */
-    public synchronized static WebDriver getDriver(String browser) {
-        //if webdriver object doesn't exist
-        //create it
-        if (driverPool.get() == null) {
-            //specify browser type in configuration.properties file
-            switch (browser) {
-                case "chrome":
-                    WebDriverManager.chromedriver().version("79").setup();
-                    ChromeOptions chromeOptions = new ChromeOptions();
-                    chromeOptions.addArguments("--start-maximized");
-                    driverPool.set(new ChromeDriver(chromeOptions));
-                    break;
-                case "chromeheadless":
-                    //to run chrome without interface (headless mode)
-                    WebDriverManager.chromedriver().version("79").setup();
-                    ChromeOptions options = new ChromeOptions();
-                    options.setHeadless(true);
-                    driverPool.set(new ChromeDriver(options));
-                    break;
-                case "firefox":
-                    WebDriverManager.firefoxdriver().setup();
-                    driverPool.set(new FirefoxDriver());
-                    break;
-                default:
-                    throw new RuntimeException("Wrong browser name!");
+                    logger.error("Wrong browser name :: " + browser);
+                    throw new RuntimeException("Wrong browser name :: " + browser);
             }
         }
         return driverPool.get();
     }
 
     public static void closeDriver() {
-        if (driverPool != null) {
+        if (driverPool.get() != null) {
             driverPool.get().quit();
             driverPool.remove();
         }

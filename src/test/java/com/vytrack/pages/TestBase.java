@@ -19,7 +19,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  * We cannot really create a dedicated page class to store
  * elements from that menu
  */
-public abstract class AbstractPageBase {
+public abstract class TestBase {
     protected WebDriver driver = Driver.getDriver();
     protected WebDriverWait wait = new WebDriverWait(driver, 25);
 
@@ -29,7 +29,7 @@ public abstract class AbstractPageBase {
     @FindBy(css = "[class='btn-group pull-right'] > button")
     protected WebElement saveAndClose;
 
-    public AbstractPageBase() {
+    public TestBase() {
         PageFactory.initElements(driver, this);
     }
 

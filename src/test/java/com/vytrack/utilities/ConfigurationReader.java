@@ -7,17 +7,13 @@ public class ConfigurationReader {
     private static Properties configFile;
 
     static {
-        try {
+        try(FileInputStream input = new FileInputStream("configuration.properties");){
             //location of properties file
-            String path = System.getProperty("user.dir")+"/configuration.properties";
             //get that file as a stream
-            FileInputStream input = new FileInputStream(path);
             //create object of Properties class
             configFile = new Properties();
             //load properties file into Properties object
             configFile.load(input);
-            //close the input s
-            input.close();
         } catch (Exception e) {
             e.printStackTrace();
             throw new RuntimeException("Failed to load properties file!");

@@ -7,27 +7,29 @@ import com.vytrack.utilities.Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.apache.log4j.Logger;
 import org.junit.Assert;
 
 public class LoginStepDefinitions {
+    private static final Logger logger = Logger.getLogger(LoginStepDefinitions.class);
     LoginPage loginPage = new LoginPage();
 
     @Given("user is on the login page")
     public void user_is_on_the_login_page() {
-        System.out.println("Open login page");
+        logger.info("Open login page");
         // -Denv=qa1, -Denv=qa2, -Denv=qa3
         String env = "qa2";
         if (System.getProperty("env") != null) {
             env = System.getProperty("env");
         }
         String URL = ConfigurationReader.getProperty(env);
-        System.out.println("URL :: " + URL);
+        logger.info("URL :: " + URL);
         Driver.getDriver().get(URL);
     }
 
     @When("user logs in as a sales manager")
     public void user_logs_in_as_a_sales_manager() {
-        System.out.println("Login as sales manager");
+        logger.info("Login as sales manager");
         loginPage.login("salesmanager110", "UserUser123");
     }
 
@@ -39,7 +41,7 @@ public class LoginStepDefinitions {
 
     @Then("user should verify that title is a Dashboard")
     public void user_should_verify_that_title_is_a_Dashboard() {
-        System.out.println("Verify that title is a Dashboard");
+        logger.info("Verify that title is a Dashboard");
         BrowserUtilities.waitForPageToLoad(10);
         BrowserUtilities.wait(2);
         Assert.assertEquals("Dashboard", Driver.getDriver().getTitle());
@@ -47,7 +49,7 @@ public class LoginStepDefinitions {
 
     @When("user logs in as a driver")
     public void user_logs_in_as_a_driver() {
-        System.out.println("Login as a driver");
+        logger.info("Login as a driver");
         loginPage.login("user19", "UserUser123");
     }
 
@@ -77,7 +79,7 @@ public class LoginStepDefinitions {
 
     @Then("user verifies that page title is {string}")
     public void user_verifies_that_page_title_is(String string) {
-        System.out.println("Verify that page title is: " + string);
+        logger.info("Verify that page title is: " + string);
         Assert.assertEquals(string, Driver.getDriver().getTitle());
     }
 

@@ -1,15 +1,16 @@
 package com.vytrack.pages;
 
 
+import com.vytrack.step_definitions.CreateCalendarEventStepDefinitions;
 import com.vytrack.utilities.BrowserUtilities;
 import com.vytrack.utilities.ConfigurationReader;
-import com.vytrack.utilities.Driver;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-public class LoginPage extends AbstractPageBase{
+public class LoginPage extends TestBase {
+    private static final Logger logger = Logger.getLogger(LoginPage.class);
 
     @FindBy(id = "prependedInput")
     private WebElement username;
@@ -73,7 +74,7 @@ public class LoginPage extends AbstractPageBase{
         }else {
             throw new RuntimeException("Invalid role!");
         }
-        System.out.println("Login as "+role);
+        logger.info("Login as "+role);
         login(userName, "UserUser123");
     }
 }

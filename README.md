@@ -60,8 +60,8 @@
   
 ###Example:
 
-mvn clean test -Dbrowser=chrome-remote -Dgrid_url=http://35.171.158.59:4444/wd/hub -Denv=qa3 -P Smoke -q
+mvn clean test -Dbrowser=chrome-remote -Dgrid_url=http://3.235.145.39:4444/wd/hub -Denv=qa3 -P Smoke -q
 
 
 #Cybertek Grid info:
-http://35.171.158.59:4444/wd/hub   
+http://3.235.145.39:4444/wd/hub   
