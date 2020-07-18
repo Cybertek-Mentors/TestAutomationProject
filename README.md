@@ -64,4 +64,4 @@ mvn clean test -Dbrowser=chrome-remote -Dgrid_url=http://3.235.145.39:4444/wd/hu
 
 
 #Cybertek Grid info:
-http://3.235.145.39:4444/wd/hub   
+http://3.235.145.39:4444/grid/console
