@@ -1,6 +1,7 @@
-@smoke_test
+@smoke_test @P1-179
 Feature: Smoke test
 
+  @P1-178
   Scenario Outline: Go to <module> and verify title: <title>
     Given user is on the login page
     When user logs in as "<user_type>"
